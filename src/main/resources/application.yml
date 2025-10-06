@@ -1,0 +1,25 @@
+server:
+  port: 8080
+
+spring:
+  thymeleaf:
+    cache: false
+
+  security:
+    oauth2:
+      client:
+        registration:
+          keycloak:
+            client-id: spring-client
+            client-secret: uGK41yQVZJgVZHiVD7Mdte7WxdsNZeNW
+            scope:
+              - openid
+              - profile
+              - email
+              - offline_access
+            redirect-uri: "http://localhost:8080/login/oauth2/code/keycloak"
+            authorization-grant-type: authorization_code
+
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8081/realms/spring-demo

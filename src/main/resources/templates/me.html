@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>User Info</title>
 </head>
 <body>
-$END$
+<h2>Thông tin người dùng</h2>
+
+<p><strong>ID Token:</strong></p>
+<pre th:text="${idToken}"></pre>
+
+<p><strong>Access Token:</strong></p>
+<pre th:text="${accessToken}"></pre>
+
+<p><strong>Refresh Token:</strong></p>
+<pre th:text="${refreshToken}"></pre>
+
+<p><a href="/">Trang chủ</a> | <a th:href="@{/logout}">Đăng xuất</a></p>
 </body>
 </html>

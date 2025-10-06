@@ -1,4 +1,4 @@
-package com.example.keycloakdemo.config;
+package com.example.keycloakdemo;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,17 +9,22 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/", "/public/**").permitAll()
+                        .requestMatchers("/", "/public").permitAll()
                         .anyRequest().authenticated()
                 )
-                .oauth2Login()
+                .oauth2Login(oauth2 -> oauth2
+                        .loginPage("/oauth2/authorization/keycloak") // optional, nếu bạn muốn tùy chỉnh
+                )
                 .logout(logout -> logout
                         .logoutSuccessUrl("/")
-                        .permitAll()
+                        .invalidateHttpSession(true)
+                        .clearAuthentication(true)
+                        .deleteCookies("JSESSIONID")
                 );
+
         return http.build();
     }
 }
