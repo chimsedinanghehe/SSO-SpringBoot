@@ -27,3 +27,8 @@ Người dùng đăng nhập vào ứng dụng bằng tài khoản đã được
 ![Result Page](src/main/resources/images/result.png)
 
 Sau khi được **ủy quyền** từ Keycloak, người dùng sẽ được chuyển hướng trở về trang ứng dụng Spring Boot. Trang này sẽ hiển thị **email** và **tên** của người dùng.
+
+## 5.refresh token
+
+
+![Result Page](src/main/resources/images/resultrefreshtoken.png)
